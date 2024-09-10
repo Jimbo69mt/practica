@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 2: Práctica de JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #d32f2f; /* Rojo */
+        }
+        .question-container {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question-container h2 {
+            font-size: 16px;
+            color: #0277bd; /* Celeste oscuro */
+        }
+        .question-container pre {
+            background-color: #e1f5fe; /* Fondo ligero para el código */
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Para que el código se ajuste */
+        }
+        .execute-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0277bd; /* Celeste oscuro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .execute-btn:hover {
+            background-color: #d32f2f; /* Rojo */
+        }
+        .back-button {
+            background-color: #a52222;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .back-button:hover {
+            background-color: #9c6363;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tarea 2: Práctica de JavaScript</h1>
+    <a href="../" class="back-button">Atras</a>
+    <div class="question-container">
+        <h2>1. Escribe un script que utilice los bucles for y while para realizar las siguientes tareas:
+            <ul><li>Define un valor entero.</li></ul>
+            <ul><li>Muestra en pantalla una lista de números desde 0 hasta el valor definido.</li></ul>
+            <ul><li>Los números deben estar separados por comas.</li></ul>
+        </h2>
+        <pre id="01js"></pre>
+        <button class="execute-btn" onclick="ejecutarCodigo('01.js')">Ejecutar Código</button>
+    </div>
+
+    <div class="question-container">
+        <h2>2. Escribe un script que realice las siguientes tareas:
+            <ul><li>Usa un bucle for para sumar todos los números de un arreglo.</li></ul>
+            <ul><li>Usa un bucle while para realizar la misma suma de números del arreglo.</li></ul>
+        </h2>
+        <pre id="02js"></pre>
+        <button class="execute-btn" onclick="ejecutarCodigo('02.js')">Ejecutar Código</button>
+    </div>
+
+    <div class="question-container">
+        <h2>3. Escribe un script que realice las siguientes tareas:
+            <ul><li>Usa un bucle "for" para imprimir cada nombre en un arreglo.</li></ul>
+            <ul><li>Usa un bucle "while" para imprimir cada nombre en el mismo arreglo.</li></ul>
+            <ul><li>Usa un bucle "do-while" para imprimir cada nombre en el mismo arreglo.</li></ul>
+        </h2>
+        <pre id="03js"></pre>
+        <button class="execute-btn" onclick="ejecutarCodigo('03.js')">Ejecutar Código</button>
+    </div>
+
+    <div class="question-container">
+        <h2>4. Crea un objeto llamado persona que contenga las siguientes propiedades:
+            <ul><li>"nombre" (cadena de texto)</li></ul>
+            <ul><li>"edad" (número)</li></ul>
+            <ul><li>"profesion" (cadena de texto)</li></ul>
+            Define una función llamada "actualizarInformacion" que reciba el objeto "persona" y dos parámetros: "nuevaEdad" y "nuevaProfesion". La función debe actualizar la edad y la profesión de la persona en el objeto y luego mostrar la información actualizada en la consola.
+        </h2>
+        <pre id="04js"></pre>
+        <button class="execute-btn" onclick="ejecutarCodigo('04.js')">Ejecutar Código</button>
+    </div>
+
+    <div class="question-container">
+        <h2>5. Escribe un script que realice las siguientes tareas:
+            <ul><li>Dado dos variables, "a" y "b", con valores iniciales (por ejemplo, "a = 4" y  "b = 9"), intercambia sus valores de manera que a tenga el valor de "b" y "b" tenga el valor de "a".</li></ul>
+            <ul><li>Realiza esta operación sin usar una variable auxiliar.</li></ul>
+        </h2>
+        <pre id="05js"></pre>
+        <button class="execute-btn" onclick="ejecutarCodigo('05.js')">Ejecutar Código</button>
+    </div>
+    <a href="../" class="back-button">Atras</a>
+    <script>
+        function ejecutarCodigo(file) {
+            const script = document.createElement('script');
+            script.src = file;
+            document.body.appendChild(script);
+        }
+        function loadJavaScriptCode(archivoJS, preTag) {
+            // Ruta del archivo JavaScript que queremos leer
+            fetch(archivoJS)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudo cargar el archivo JavaScript.');
+                    }
+                    return response.text();
+                })
+                .then(code => {
+                    // Mostrar el contenido del archivo en el div
+                    document.getElementById(preTag).textContent = code;
+                })
+                .catch(error => {
+                    document.getElementById(preTag).textContent = `Error: ${error.message}`;
+                });
+        }
+        loadJavaScriptCode("01.js","01js");
+        loadJavaScriptCode("02.js","02js");
+        loadJavaScriptCode("03.js","03js");
+        loadJavaScriptCode("04.js","04js");
+        loadJavaScriptCode("05.js","05js");
+    </script>
+
+</body>
+</html>
